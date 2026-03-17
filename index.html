@@ -211,6 +211,8 @@
     }
 
     async function setupVideoAndAudio() {
+		const s = new PIXI.Sprite(new PIXI.Texture(PIXI.BaseTexture.from(v)));
+s.blendMode = PIXI.BLEND_MODES.SCREEN; // Это уберет черный фон, оставив только светлые части
         const res = await fetch(CONFIG.VIDEO_URL);
         const buf = await res.arrayBuffer();
         const url = URL.createObjectURL(new Blob([buf], { type: 'video/webm' }));
